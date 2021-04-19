@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.fasttext";
+option java_outer_classname = "FastTextProto";
+option objc_class_prefix = "HLW";
+
+package fts;
+
+// The fasttext service definition.
+service FastText {
+  // Sends a text
+  rpc Predict (PredictRequest) returns (PredictReply) {}
+}
+
+// The request message containing the text.
+message PredictRequest {
+  string text = 1;
+}
+
+// The response message containing the predictor and version
+message PredictReply {
+  string label = 1;
+  float score=2;
+}
